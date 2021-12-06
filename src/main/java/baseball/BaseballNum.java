@@ -2,25 +2,31 @@ package baseball;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.stream.IntStream;
 
 public class BaseballNum {
-	private HashSet<Integer> baseballNum = new HashSet<>();
+	private HashSet<Integer> baseballNum;
 
-	public BaseballNum(String inputNumbers) {
-		validateDigitIsNumber(inputNumbers);
-		validateDuplicateDigit(inputNumbers);
+	private BaseballNum(HashSet<Integer> baseballNum) {
+		this.baseballNum = baseballNum;
 	}
 
-	private void validateDuplicateDigit(String inputNumbers) {
+	public static BaseballNum inputGuessNum(String threeDigit) {
+		validateDigitIsNumber(threeDigit);
+		HashSet<Integer> baseballNum = validateDuplicateDigit(threeDigit);
+		return new BaseballNum(baseballNum);
+	}
+
+	private static HashSet<Integer> validateDuplicateDigit(String inputNumbers) {
+		HashSet<Integer> baseballNum = new HashSet<>();
 		String[] digits = inputNumbers.split("");
 		Arrays.stream(digits).forEach(eachDigit -> baseballNum.add(Integer.parseInt(eachDigit)));
 		if (baseballNum.size() != 3) {
 			throw new IllegalArgumentException("중복되지 않은 세 자리 숫자를 입력하세요.");
 		}
+		return baseballNum;
 	}
 
-	private void validateDigitIsNumber(String inputNumbers) {
+	private static void validateDigitIsNumber(String inputNumbers) {
 		if (!inputNumbers.matches("[1-9]{3}")) {
 			throw new IllegalArgumentException("세 자리 숫자를 입력하세요.");
 		}
