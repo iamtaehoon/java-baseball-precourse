@@ -13,7 +13,7 @@ class BaseballNumTest {
 
 	@ParameterizedTest
 	@ValueSource(strings = {"123","234","168","471","916","987"})
-	@DisplayName("1~9로 이루어진 세 자리 문자열을 입력받았을 때 객체를 만들어준다.")
+	@DisplayName("1~9로 이루어지고 각 자리의 숫자가 전부 다른 세 자리 문자열을 입력받으면 객체를 만들어준다.")
 	void 세자리_1부터_9로_이루어진_문자열_입력받을때_정상(String threeDigit) {
 		assertThat(new BaseballNum(threeDigit)).isNotNull();
 	}
@@ -32,5 +32,13 @@ class BaseballNumTest {
 	void 세자리_정수가_아니고_문자열이면_오류(String threeDigit) {
 		assertThatThrownBy(() -> new BaseballNum(threeDigit)).isInstanceOf(IllegalArgumentException.class)
 			.hasMessageContaining("세 자리 숫자를 입력하세요.");
+	}
+
+	@ParameterizedTest
+	@ValueSource(strings = {"121", "222", "616", "919", "949", "844"})
+	@DisplayName("세 자리 숫자가 하나라도 겹치면 객체를 만들지 못한다.")
+	void 야구숫자에_겹치는_숫자가_있으면_오류(String threeDigit) {
+		assertThatThrownBy(() -> new BaseballNum(threeDigit)).isInstanceOf(IllegalArgumentException.class)
+			.hasMessageContaining("중복되지 않은 세 자리 숫자를 입력하세요.");
 	}
 }
