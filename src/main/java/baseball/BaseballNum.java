@@ -3,11 +3,21 @@ package baseball;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class BaseballNum {
 	private HashSet<Integer> baseballNum;
 
 	private BaseballNum(HashSet<Integer> baseballNum) {
 		this.baseballNum = baseballNum;
+	}
+
+	public static BaseballNum makeAnswer() {
+		HashSet<Integer> baseballNum = new HashSet<>();
+		while (baseballNum.size() != 3) {
+			baseballNum.add(Randoms.pickNumberInRange(1, 9));
+		}
+		return new BaseballNum(baseballNum);
 	}
 
 	public static BaseballNum inputGuessNum(String threeDigit) {
