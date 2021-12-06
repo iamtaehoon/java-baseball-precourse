@@ -12,12 +12,11 @@ public class BaseballNum {
 		this.baseballNum = baseballNum;
 	}
 
-	public static BaseballNum makeAnswer() {
-		HashSet<Integer> baseballNum = new HashSet<>();
-		while (baseballNum.size() != 3) {
-			baseballNum.add(Randoms.pickNumberInRange(1, 9));
+	public static BaseballNum makeAnswer(HashSet<Integer> threeDigit) {
+		if (threeDigit.size() != 3) {
+			throw new IllegalArgumentException("중복되지 않은 세 자리 숫자를 입력하세요.");
 		}
-		return new BaseballNum(baseballNum);
+		return new BaseballNum(threeDigit);
 	}
 
 	public static BaseballNum inputGuessNum(String threeDigit) {
