@@ -1,5 +1,6 @@
 package baseball;
 
+<<<<<<< HEAD
 import static util.GameConstant.*;
 
 import java.util.regex.Pattern;
@@ -26,4 +27,10 @@ public class Player {
         System.out.print(INPUT_REQUEST_MESSAGE);
         this.guessNumber = Console.readLine();
     }
+=======
+public class Player {
+	public BaseballNum inputNumber() {
+		return BaseballNum.inputGuessNum(InputView.inputNumbers());
+	}
+>>>>>>> bec3f33a01984920b0f7c7f6edb8b8fd5305e388
 }

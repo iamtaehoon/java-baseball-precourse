@@ -1,5 +1,6 @@
 package baseball;
 
+<<<<<<< HEAD
 import static util.GameConstant.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -65,4 +66,13 @@ public class Computer {
 
         eachDigitOfGuessNumber[2] = guessNumber;
     }
+=======
+import java.util.HashSet;
+
+public class Computer {
+
+	public BaseballNum makeAnswer(HashSet<Integer> randomThreeDigit) { //randomGenerator가 들어와야함.
+		return BaseballNum.makeAnswer(randomThreeDigit);
+	}
+>>>>>>> bec3f33a01984920b0f7c7f6edb8b8fd5305e388
 }
